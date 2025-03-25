@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "normalize.css": "^8.0.1",
     "pinia": "^3.0.1",
     "vue-router": "^4.5.0"

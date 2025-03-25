@@ -74,7 +74,7 @@ const getCities = () => {
 .location-box {
   display: flex;
   justify-content: space-between;
-  padding: 4px 12px;
+
   height: 30px;
   font-size: 14px;
   color: gray;
@@ -91,7 +91,7 @@ const getCities = () => {
 
   img {
     padding: 0 0 0 2px;
-    height: 80%;
+    height: 60%;
   }
 }
 </style>

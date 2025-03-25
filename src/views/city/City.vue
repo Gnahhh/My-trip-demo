@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick } from 'vue';
+import { ref, watch, nextTick, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useCityStore } from '../../store/modules/city';
 import { storeToRefs } from 'pinia';
@@ -285,7 +285,6 @@ const highlightCity = (cityName) => {
         </van-index-bar>
       </template>
     </div>
-
   </div>
 </template>
 
