@@ -1,10 +1,3 @@
-<template>
-  <div id="app">
-    <router-view></router-view>
-    <tabbar v-show="!route.meta.notShowTabbar"></tabbar>
-  </div>
-</template>
-
 <script setup>
 // 导入组件
 import { useRoute } from 'vue-router';
@@ -19,3 +12,16 @@ let title = ref("我是标题")
 
 
 </script>
+
+<template>
+  <div id="app">
+    <router-view></router-view>
+    <tabbar v-show="!route.meta.notShowTabbar"></tabbar>
+  </div>
+</template>
+
+<style lang="less" scoped>
+#app {
+  margin-bottom: 40px;
+}
+</style>

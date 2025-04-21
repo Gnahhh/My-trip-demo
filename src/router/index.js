@@ -3,10 +3,9 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHashHistory(),
 
-  // path => component
   routes: [
     {
-      path: "/redirect",
+      path: "/",
       component: () => import('../views/home/Home.vue'),
     },
     {
@@ -28,6 +27,11 @@ const router = createRouter({
     {
       path: "/city",
       component: () => import('../views/city/City.vue'),
+      meta: { notShowTabbar: true } // 不显示Tabbar
+    },
+    {
+      path: "/search",
+      component: () => import('../views/search/Search.vue'),
       meta: { notShowTabbar: true } // 不显示Tabbar
     }
   ]

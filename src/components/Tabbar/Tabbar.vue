@@ -63,6 +63,10 @@ const barItemClisk = (index, path) => {
   bottom: 0;
   width: 100%;
   padding: 5px 0;
+  background-color: #fff;
+   // 添加上边框阴影
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9; // 确保在内容之上
 
   ul {
     display: flex;

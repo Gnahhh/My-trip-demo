@@ -3,6 +3,8 @@
 import Topbar from './components/Topbar.vue';
 import Locationbar from './components/Locationbar.vue';
 import SearchBar from './components/SearchBar.vue';
+import Categories from './components/Categories.vue';
+import HomeList from './components/HomeList.vue';
 
 </script>
 
@@ -12,6 +14,8 @@ import SearchBar from './components/SearchBar.vue';
     <div class="home-container-box">
       <Locationbar></Locationbar>
       <SearchBar></SearchBar>
+      <categories></categories>
+      <HomeList></HomeList>
     </div>
   </div>
 </template>
