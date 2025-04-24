@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { useHomeStore } from '../../../store/modules/home';
@@ -16,21 +16,33 @@ const router = useRouter();
 // 颜色样式
 const color = '#FF9645';
 
-// 时间数据
-const liveStart = ref('8月25日');
-const liveEnd = ref('8月26日');
+// 时间数据 以及 是否显示日历
+const { checkInDate, checkOutDate, calendarVisible} = storeToRefs(homeStore);
 const liveDate = ref(1);
 const show = ref(false);
+
+// 日期选择
+const changeCalendar = function() {
+  homeStore.showCalendar();
+}
 
 // 选择日期函数
 const onConfirm = ([startDate, endDate]) => {
   // 格式化时间
-  liveStart.value = dayjs(startDate).format('M月D日');
-  liveEnd.value = dayjs(endDate).format('M月D日');
+  homeStore.updateDates(dayjs(startDate).valueOf(), dayjs(endDate).valueOf())
   // 计算天数差
   liveDate.value = dayjs(endDate).diff(dayjs(startDate), 'day');
-  show.value = false;
+  homeStore.hideCalendar();
 }
+
+// 格式化日期的计算属性
+const formattedCheckIn = computed(() => {
+  return dayjs(checkInDate.value).format('M月D日');
+});
+
+const formattedCheckOut = computed(() => {
+  return dayjs(checkOutDate.value).format('M月D日');
+});
 
 // 热门建议
 // 数据请求
@@ -53,26 +65,30 @@ const searchClick = function() {
   });
 }
 
+// 获取searchbar的实例
+const searchbarRef = ref(null);
 
-
-
+// 显式暴露给父组件
+defineExpose({
+  searchbarRef,
+});
 
 </script>
 
 <template>
   <!-- 日期选择 -->
-  <div class="select-date">
-    <div class="select-bar" @click="show = true">
+  <div class="select-date" ref="searchbarRef">
+    <div class="select-bar" @click="changeCalendar">
       <div class="start-date">
         <span class="title gray">入住</span>
-        <span class="content">{{ liveStart }}</span>
+        <span class="content">{{ formattedCheckIn }}</span>
       </div>
       <div class="data-range">
         <span class="content gray">共{{ liveDate }}晚</span>
       </div>
       <div class="end-date">
         <span class="title gray">离店</span>
-        <span class="tontent">{{ liveEnd }}</span>
+        <span class="tontent">{{ formattedCheckOut }}</span>
       </div>
     </div>
 
@@ -100,7 +116,7 @@ const searchClick = function() {
     <div class="search-button" @click="searchClick">开始搜索</div>
     
     <van-calendar 
-      v-model:show="show" 
+      v-model:show="calendarVisible" 
       type="range" 
       @confirm="onConfirm" 
       :color="color"

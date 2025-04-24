@@ -48,21 +48,21 @@ function setupObserver() {
     
   }, {
     root: null,
-    rootMargin: "0px",
-    threshold: 0.2,
+    rootMargin: "-20px",
+    threshold: 0,
   });
   
   // 确保DOM元素存在
   if (homesRef.value?.lastElementChild) {
     // 开始观察新的最后一个元素
     intersectionObserver.observe(homesRef.value.lastElementChild);
-    console.log("正在观察:", homesRef.value.lastElementChild);
+    // console.log("正在观察:", homesRef.value.lastElementChild);
   }
 }
 
 // 加载更多数据的函数
 async function loadMoreData() {
-  console.log("加载更多数据");
+  // console.log("加载更多数据");
   
   // 解除当前观察
   if (intersectionObserver) {

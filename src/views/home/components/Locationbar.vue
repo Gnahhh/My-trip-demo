@@ -1,5 +1,4 @@
 <script setup>
-
 import { fetchCityName } from "@/utils/fetch_location.js";
 
 import { ref } from 'vue';
