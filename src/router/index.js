@@ -33,6 +33,13 @@ const router = createRouter({
       path: "/search",
       component: () => import('../views/search/Search.vue'),
       meta: { notShowTabbar: true } // 不显示Tabbar
+    },
+    {
+      path: "/home/:houseId",
+      name: "homeDetail",
+      component: () => import('../views/detail/Detail.vue'),
+      meta: { notShowTabbar: true },
+      props: true
     }
   ]
 });

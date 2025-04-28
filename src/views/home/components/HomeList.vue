@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, nextTick, onUnmounted } from "vue";
+import router from "../../../router";
 import { storeToRefs } from "pinia";
 import { useHomeStore } from "../../../store/modules/home";
 import HomeItemV1 from "../../../components/HomeItem/HomeItemV1.vue";
@@ -88,6 +89,18 @@ onUnmounted(() => {
 });
 
 
+// 处理home点击事件
+function handleItemClick(houseData) {
+  // console.log("房屋被点击:", houseData);
+  router.push({
+    name: "homeDetail",
+    params: {
+      houseId: houseData.houseId
+    }
+  });
+}
+
+
 </script>
 
 <template>
@@ -100,10 +113,12 @@ onUnmounted(() => {
         <HomeItemV1 
           v-if="item.discoveryContentType === 9"
           :houseData="item.data"
+          @homeClick="handleItemClick"
         ></HomeItemV1>
         <home-item-v-2 
           v-else-if="item.discoveryContentType === 3"
           :houseData="item.data"
+          @homeClick="handleItemClick"
         ></home-item-v-2>
       </template>
     </div>

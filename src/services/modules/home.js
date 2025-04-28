@@ -19,6 +19,7 @@ function getHomeList(page = 1) {
   })
 }
 
+
 export {
   getHotSuggestions,
   getHomeCategories,

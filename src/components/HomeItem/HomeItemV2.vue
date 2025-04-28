@@ -1,14 +1,22 @@
 <script setup>
-defineProps({
+const props = defineProps({
   houseData: {
     type: Object,
     required: true
   }
 })
+
+// 定义事件
+const emit = defineEmits(['homeClick']);
+
+// 处理函数
+const handleClick = function() {
+  emit('homeClick', props.houseData);
+}
 </script>
 
 <template>
-  <div class="home-item-v2">
+  <div class="home-item-v2" @click="handleClick">
     <img :src="houseData.image.url" alt="">
     <div class="details">
       <p class="location"><van-icon name="location" />{{ houseData.location }}</p>
