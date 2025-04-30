@@ -1,11 +1,9 @@
 <script setup>
-import InfoItem from "../../../components/Detail/InfoItem.vue"
+import InfoItem from "../../../components/Detail/InfoItem.vue";
 
 const props = defineProps({
-  titleInfos: Object
+  titleInfos: Object,
 })
-
-console.log(props)
 
 </script>
 
@@ -59,11 +57,23 @@ console.log(props)
     line-height: 1.4;
     letter-spacing: 0.02em;
   }
+  .tags {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;  
 
-  .tag {
-    font-size: 11px;
-    padding: 1px;
-    margin: 2px;
+    /* 隐藏滚动条 - Webkit浏览器 */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 1px;
+      margin: 2px;
+    }
   }
 
   .comment-content {
@@ -136,13 +146,6 @@ console.log(props)
         background-size: contain;
         vertical-align: top;
         margin-right: 6px;
-      }
-    }
-    
-    // 右侧"地图-周边"文本样式
-    :deep(.right-content) {
-      span {
-        font-size: 13px;
       }
     }
   }

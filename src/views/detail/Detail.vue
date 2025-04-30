@@ -5,6 +5,9 @@ import { useDetailStore } from '../../store/modules/detail';
 import { useRouter } from 'vue-router';
 
 import DetailTitles from "./components/DetailTitles.vue";
+import Facilities from "./components/Facilities.vue";
+import LandlordInfos from "./components/LandlordInfos.vue";
+import HotComment from "./components/HotComment.vue";
 
 const props = defineProps({
   houseId: String
@@ -87,6 +90,9 @@ function jumpToCategory(category) {
 
       <div class="detail-content">
         <DetailTitles :titleInfos="detailsInfo?.data?.mainPart?.topModule"></DetailTitles>
+        <Facilities :facilities="detailsInfo?.data?.mainPart?.dynamicModule?.facilityModule?.houseFacility"></Facilities>
+        <LandlordInfos :landlordInfos="detailsInfo?.data?.mainPart?.dynamicModule?.landlordModule"></LandlordInfos>
+        <HotComment :hotComments="detailsInfo?.data?.mainPart?.dynamicModule?.commentModule"></HotComment>
       </div>
     </div>
   </div>
