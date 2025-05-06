@@ -1,5 +1,5 @@
 export const fetchCityName = async (latitude, longitude) => {
-  const key = '0d480b7cda660e6ee1a45e0d904ffba3';  
+  const key = import.meta.env.VITE_MAP_API_KEY;    
   const url = `https://restapi.amap.com/v3/geocode/regeo?key=${key}&location=${longitude},${latitude}`;
   
   try {

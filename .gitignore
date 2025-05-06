@@ -44,3 +44,7 @@ components.d.ts
 
 # 如果使用缓存
 .cache
+
+# .gitignore
+.env
+.env.local
